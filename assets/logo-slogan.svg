@@ -1,50 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" role="img" aria-label="GameBook  Onde cada save vira história">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" role="img" aria-label="GameBook â€” Onde cada save vira histÃ³ria">
+
   <defs>
+
     <linearGradient id="lgWord" x1="0%" y1="0%" x2="100%" y2="0%">
+
       <stop offset="0%" stop-color="#00D9FF"/>
+
       <stop offset="45%" stop-color="#FFFFFF"/>
+
       <stop offset="100%" stop-color="#9945FF"/>
+
     </linearGradient>
+
     <filter id="lgGlow">
+
       <feGaussianBlur stdDeviation="1.5" result="b"/>
+
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+
     </filter>
+
   </defs>
 
   <!-- Background panel -->
+
   <rect x="2" y="2" width="476" height="136" rx="12" fill="#0A0814" stroke="#1E1A2E" stroke-width="2"/>
 
   <!-- Mark -->
+
   <g transform="translate(16, 28) scale(1.35)" filter="url(#lgGlow)">
+
     <rect width="64" height="64" rx="8" fill="#12101F" stroke="#9945FF" stroke-width="2"/>
+
     <rect x="8" y="40" width="48" height="6" fill="#FFAA00"/>
+
     <rect x="10" y="34" width="20" height="8" fill="#FFE8B8"/>
+
     <rect x="34" y="34" width="20" height="8" fill="#FFD080"/>
+
     <rect x="30" y="34" width="4" height="12" fill="#9945FF"/>
+
     <g fill="#00D9FF">
+
       <rect x="20" y="10" width="24" height="4"/>
+
       <rect x="16" y="14" width="8" height="4"/><rect x="28" y="14" width="8" height="4"/><rect x="40" y="14" width="8" height="4"/>
+
       <rect x="12" y="18" width="40" height="4"/>
+
       <rect x="12" y="22" width="8" height="4"/><rect x="28" y="22" width="8" height="4"/><rect x="44" y="22" width="8" height="4"/>
+
       <rect x="8" y="26" width="48" height="4"/>
+
       <rect x="12" y="30" width="8" height="4"/><rect x="44" y="30" width="8" height="4"/>
+
     </g>
+
     <rect x="20" y="22" width="4" height="4" fill="#12101F"/>
+
     <rect x="40" y="22" width="4" height="4" fill="#12101F"/>
+
     <rect x="38" y="36" width="4" height="4" fill="#FF0080"/>
+
     <rect x="42" y="38" width="4" height="4" fill="#FF0080"/>
+
     <rect x="38" y="40" width="4" height="4" fill="#FF0080"/>
+
   </g>
 
   <!-- Wordmark -->
+
   <text x="118" y="58" font-family="'Press Start 2P', monospace" font-size="26" fill="url(#lgWord)" letter-spacing="1">GAME</text>
+
   <text x="118" y="96" font-family="'Press Start 2P', monospace" font-size="26" fill="#FFAA00" letter-spacing="1">BOOK</text>
 
   <!-- Slogan -->
-  <text x="118" y="122" font-family="'VT323', monospace" font-size="22" fill="#8A8AAA" letter-spacing="3">ONDE CADA SAVE VIRA HISTÓRIA</text>
+
+  <text x="118" y="122" font-family="'VT323', monospace" font-size="22" fill="#8A8AAA" letter-spacing="3">ONDE CADA SAVE VIRA HISTÃ“RIA</text>
 
   <!-- Decorative pixels -->
+
   <rect x="118" y="102" width="80" height="2" fill="#00D9FF"/>
+
   <rect x="198" y="102" width="40" height="2" fill="#FF0080"/>
+
   <rect x="238" y="102" width="20" height="2" fill="#FFAA00"/>
+
 </svg>
+
