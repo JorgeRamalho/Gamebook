@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GameBook">
+  <defs>
+    <linearGradient id="markGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D9FF"/>
+      <stop offset="100%" stop-color="#9945FF"/>
+    </linearGradient>
+  </defs>
+  <!-- Pixel grid: invader + open book (marca) -->
+  <rect width="64" height="64" rx="8" fill="#0A0814"/>
+  <!-- Open book base -->
+  <rect x="8" y="40" width="48" height="6" fill="#FFAA00"/>
+  <rect x="10" y="34" width="20" height="8" fill="#FFE8B8"/>
+  <rect x="34" y="34" width="20" height="8" fill="#FFD080"/>
+  <rect x="30" y="34" width="4" height="12" fill="#9945FF"/>
+  <!-- Invader head (iconic silhouette) -->
+  <g fill="url(#markGlow)">
+    <rect x="20" y="10" width="24" height="4"/>
+    <rect x="16" y="14" width="8" height="4"/><rect x="28" y="14" width="8" height="4"/><rect x="40" y="14" width="8" height="4"/>
+    <rect x="12" y="18" width="40" height="4"/>
+    <rect x="12" y="22" width="8" height="4"/><rect x="28" y="22" width="8" height="4"/><rect x="44" y="22" width="8" height="4"/>
+    <rect x="8" y="26" width="48" height="4"/>
+    <rect x="12" y="30" width="8" height="4"/><rect x="44" y="30" width="8" height="4"/>
+  </g>
+  <!-- Eyes -->
+  <rect x="20" y="22" width="4" height="4" fill="#0A0814"/>
+  <rect x="40" y="22" width="4" height="4" fill="#0A0814"/>
+  <!-- Play pixel on book -->
+  <rect x="38" y="36" width="4" height="4" fill="#FF0080"/>
+  <rect x="42" y="38" width="4" height="4" fill="#FF0080"/>
+  <rect x="38" y="40" width="4" height="4" fill="#FF0080"/>
+</svg>

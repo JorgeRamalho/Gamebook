@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameBook — Jorge · Gamer das Old School</title>
+  <meta name="description" content="GameBook — o canto de Jorge na internet. Fliperamas, fitas cassete, memory cards e a alma do gamer raiz dos anos 80, 90 e 2000.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="crt-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- Tela de boot -->
+  <div id="boot-screen" class="boot-screen">
+    <div class="boot-content">
+      <img src="assets/logo-mark.svg" alt="" class="boot-mark" width="96" height="96">
+      <p class="boot-logo">GAMEBOOK</p>
+      <p class="boot-slogan">Onde cada save vira história</p>
+      <p class="boot-player">JOGADOR: JORGE</p>
+      <p class="boot-text" id="boot-text">INICIALIZANDO SISTEMA...</p>
+      <div class="boot-bar"><div class="boot-bar-fill" id="boot-bar"></div></div>
+      <p class="boot-hint blink">PRESSIONE QUALQUER TECLA</p>
+    </div>
+  </div>
+
+  <header class="cabinet-top">
+    <div class="marquee">
+      <span>★ PAC-MAN ★ BOMBERMAN ★ CONTRA ★ STREET FIGHTER II ★ SONIC ★ MEGA MAN X ★ CASTLEVANIA ★ CRASH ★ FINAL FANTASY VII ★ TEKKEN 3 ★ HALO ★</span>
+    </div>
+    <div class="brand-bar">
+      <a href="#inicio" class="brand-bar-link">
+        <img src="assets/logo-mark.svg" alt="" class="brand-mark" width="40" height="40">
+        <div class="brand-wordmark">
+          <span class="brand-name">
+            <span class="brand-name-game">GAME</span>
+            <span class="brand-name-book">BOOK</span>
+          </span>
+          <span class="brand-tagline">Onde cada save vira história</span>
+        </div>
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="#inicio" class="nav-link">INÍCIO</a>
+      <a href="#marca" class="nav-link">MARCA</a>
+      <a href="#sobre" class="nav-link">SOBRE</a>
+      <a href="#eras" class="nav-link">ERAS</a>
+      <a href="#classicos" class="nav-link">CLÁSSICOS</a>
+      <a href="#setup" class="nav-link">SETUP</a>
+      <a href="#creditos" class="nav-link">CRÉDITOS</a>
+    </nav>
+    <div class="hud">
+      <span class="hud-item">JOGADOR: <strong id="player-name">JORGE</strong></span>
+      <span class="hud-item">SCORE: <strong id="score">000000</strong></span>
+      <span class="hud-item">VIDAS: <strong id="lives">♥♥♥</strong></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-layout">
+        <img src="assets/mascot.svg" alt="BitBook — mascote GameBook, invader pixel abraçando um livro aberto" class="hero-mascot" width="200" height="240">
+        <div class="hero-screen">
+          <h1 class="visually-hidden">GameBook — Onde cada save vira história</h1>
+          <img src="assets/logo-slogan.svg" alt="GameBook — Onde cada save vira história" class="hero-brand" width="480" height="140">
+          <p class="hero-tagline">80s · 90s · 2000s</p>
+          <p class="hero-intro">
+            Bem-vindo ao arquivo pessoal de quem aprendeu a jogar antes do tutorial,
+            soprou cartucho sem vergonha e tratou cada crédito como ouro.
+          </p>
+          <button class="btn-start blink" id="btn-start">▶ PRESS START</button>
+          <p class="konami-hint">↑↑↓↓←→←→BA = segredo</p>
+        </div>
+      </div>
+      <div class="hero-pixel-art" aria-hidden="true">
+        <div class="pixel-sprite sprite-ship"></div>
+        <div class="pixel-sprite sprite-invader"></div>
+        <div class="pixel-sprite sprite-coin"></div>
+      </div>
+    </section>
+
+    <section id="marca" class="section identity">
+      <h2 class="section-title">▌ IDENTIDADE VISUAL ▐</h2>
+      <p class="section-desc">BitBook — invader pixel + livro aberto. A figura-símbolo do GameBook.</p>
+
+      <div class="identity-logos">
+        <figure class="identity-card">
+          <img src="assets/logo-mark.svg" alt="Marca GameBook — ícone" width="64" height="64">
+          <figcaption>Marca</figcaption>
+        </figure>
+        <figure class="identity-card identity-card-wide">
+          <img src="assets/logo-full.svg" alt="Logo GameBook" width="420" height="100">
+          <figcaption>Logo</figcaption>
+        </figure>
+        <figure class="identity-card identity-card-wide">
+          <img src="assets/logo-slogan.svg" alt="Logo GameBook com slogan" width="480" height="140">
+          <figcaption>Logo + slogan</figcaption>
+        </figure>
+        <figure class="identity-card">
+          <img src="assets/mascot.svg" alt="BitBook mascote" width="200" height="240">
+          <figcaption>BitBook</figcaption>
+        </figure>
+      </div>
+
+      <div class="identity-palette">
+        <h3 class="identity-subtitle">Paleta de cores</h3>
+        <ul class="palette-grid">
+          <li class="swatch" data-color="CRT Cyan" style="--swatch: #00D9FF"><span>#00D9FF</span></li>
+          <li class="swatch" data-color="Arcade Magenta" style="--swatch: #FF0080"><span>#FF0080</span></li>
+          <li class="swatch" data-color="Cartucho Amber" style="--swatch: #FFAA00"><span>#FFAA00</span></li>
+          <li class="swatch" data-color="HUD Lime" style="--swatch: #66FF33"><span>#66FF33</span></li>
+          <li class="swatch" data-color="PS Violet" style="--swatch: #9945FF"><span>#9945FF</span></li>
+          <li class="swatch" data-color="Página Paper" style="--swatch: #FFE8B8"><span>#FFE8B8</span></li>
+          <li class="swatch" data-color="Cabinet Ink" style="--swatch: #0A0814"><span>#0A0814</span></li>
+        </ul>
+      </div>
+
+      <div class="identity-type">
+        <h3 class="identity-subtitle">Tipografia</h3>
+        <p class="type-display">Press Start 2P — GAMEBOOK</p>
+        <p class="type-body">VT323 — Onde cada save vira história. Fliperamas, fitas cassete e memory cards.</p>
+      </div>
+    </section>
+
+    <section id="sobre" class="section about">
+      <h2 class="section-title">▌ PLAYER 1: JORGE ▐</h2>
+      <div class="about-panel">
+        <div class="about-text">
+          <p class="about-lead">
+            Gamer raiz não é quem joga tudo — é quem <em>lembra</em> de tudo.
+          </p>
+          <p>
+            Cresci entre o barulho das fichas no fliperama, o cheiro de plástico quente
+            do Master System e aquela ansiedade de ligar o PlayStation 1 e ouvir
+            o som do disco girando. Cada era deixou uma marca: pixels que viraram
+            amizade, rivalidade na tela dividida e noites viradas atrás de
+            <strong>continuar?</strong>
+          </p>
+          <p>
+            Este site é meu canto na internet — um save point entre o passado
+            e o presente. Sem hype, sem loot box, só nostalgia de verdade
+            e respeito por quem esteve lá desde o começo.
+          </p>
+        </div>
+        <ul class="about-stats">
+          <li><span class="stat-label">ERA FAVORITA</span><span class="stat-value">16-BIT</span></li>
+          <li><span class="stat-label">GÊNERO</span><span class="stat-value">PLATAFORMA / RPG</span></li>
+          <li><span class="stat-label">CONSOLE DE CORAÇÃO</span><span class="stat-value">SNES · PS1</span></li>
+          <li><span class="stat-label">STATUS</span><span class="stat-value blink-slow">ONLINE</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="eras" class="section eras">
+      <h2 class="section-title">▌ LINHA DO TEMPO ▐</h2>
+      <div class="timeline">
+        <article class="era-card" data-era="80s">
+          <div class="era-badge">1980–1989</div>
+          <h3>ARCADE & 8-BIT</h3>
+          <p>
+            Fliperama de bairro, fita cassete demorando pra carregar e a primeira
+            vez que seguramos um controle retangular. Cada crédito era uma missão.
+          </p>
+          <ul class="era-games">
+            <li>Pac-Man</li>
+            <li>Donkey Kong</li>
+            <li>Super Mario Bros.</li>
+            <li>Ghosts 'n Goblins</li>
+            <li>Bomberman</li>
+            <li>Contra</li>
+          </ul>
+          <div class="era-console">NES · Master System · Atari 2600</div>
+        </article>
+
+        <article class="era-card" data-era="90s">
+          <div class="era-badge">1990–1999</div>
+          <h3>16-BIT & REVOLUÇÃO</h3>
+          <p>
+            Sega vs Nintendo na escola, <em>HADOUKEN!</em> no fliperama e o salto
+            pro 3D. RPGs épicos, plataformas perfeitas e a guerra dos botões
+            na tela dividida.
+          </p>
+          <ul class="era-games">
+            <li>Sonic the Hedgehog</li>
+            <li>Street Fighter II</li>
+            <li>Mega Man X</li>
+            <li>Chrono Trigger</li>
+            <li>Castlevania: SOTN</li>
+            <li>Mario Kart 64</li>
+          </ul>
+          <div class="era-console">SNES · Mega Drive · PS1 · N64</div>
+        </article>
+
+        <article class="era-card" data-era="2000s">
+          <div class="era-badge">2000–2009</div>
+          <h3>ONLINE & BLOCKBUSTER</h3>
+          <p>
+            LAN party na casa do amigo, Xbox Live, MMOs e jogos que pareciam
+            filme. O hobby virou cultura pop — e a gente já estava pronta.
+          </p>
+          <ul class="era-games">
+            <li>Final Fantasy X</li>
+            <li>Metal Gear Solid 2</li>
+            <li>Grand Theft Auto III</li>
+            <li>Counter-Strike 1.6</li>
+            <li>World of Warcraft</li>
+            <li>Halo: Combat Evolved</li>
+          </ul>
+          <div class="era-console">PS2 · Xbox · GameCube · Dreamcast</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="classicos" class="section classics">
+      <h2 class="section-title">▌ SALA DE TROFÉUS ▐</h2>
+      <p class="section-desc">Clique nos cartuchos — cada um guarda uma memória.</p>
+      <div class="game-grid">
+        <div class="game-cartridge" data-game="mario">
+          <div class="cart-label">SUPER MARIO</div>
+          <div class="cart-body"></div>
+        </div>
+        <div class="game-cartridge" data-game="zelda">
+          <div class="cart-label">ZELDA</div>
+          <div class="cart-body"></div>
+        </div>
+        <div class="game-cartridge" data-game="sonic">
+          <div class="cart-label">SONIC</div>
+          <div class="cart-body"></div>
+        </div>
+        <div class="game-cartridge" data-game="sf2">
+          <div class="cart-label">SF II</div>
+          <div class="cart-body"></div>
+        </div>
+        <div class="game-cartridge" data-game="megaman">
+          <div class="cart-label">MEGA MAN</div>
+          <div class="cart-body"></div>
+        </div>
+        <div class="game-cartridge" data-game="crash">
+          <div class="cart-label">CRASH</div>
+          <div class="cart-body"></div>
+        </div>
+      </div>
+      <p class="classics-quote">"Um save point não apaga as memórias."</p>
+    </section>
+
+    <section id="setup" class="section setup">
+      <h2 class="section-title">▌ SETUP DO GAMEBOOK ▐</h2>
+      <div class="setup-grid">
+        <div class="setup-item">
+          <span class="setup-icon">📺</span>
+          <h4>TV de Tubo</h4>
+          <p>Scanlines naturais. Nenhum filtro digital substitui a CRT da infância.</p>
+        </div>
+        <div class="setup-item">
+          <span class="setup-icon">🎮</span>
+          <h4>Controle com Fio</h4>
+          <p>Zero lag. Zero bateria. Marca de dedo no analógico — prova de uso.</p>
+        </div>
+        <div class="setup-item">
+          <span class="setup-icon">💾</span>
+          <h4>Memory Card</h4>
+          <p>Cada slot guardava horas de vida. Apagar save era drama real.</p>
+        </div>
+        <div class="setup-item">
+          <span class="setup-icon">📖</span>
+          <h4>Manual Físico</h4>
+          <p>Mapas dobrados, códigos secretos e cheiro de papel novo.</p>
+        </div>
+        <div class="setup-item">
+          <span class="setup-icon">👾</span>
+          <h4>Revista Impressa</h4>
+          <p>Ação Games, Nintendo World — dicas rabiscadas na margem.</p>
+        </div>
+        <div class="setup-item">
+          <span class="setup-icon">🕹️</span>
+          <h4>Fliperama Local</h4>
+          <p>Onde nasceu a rivalidade de verdade. Fila pra jogar SF II.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="creditos" class="section credits">
+      <h2 class="section-title">▌ GAME OVER? ▐</h2>
+      <div class="credits-screen">
+        <p class="credits-line">FEITO POR JORGE — COM ♥ E 8-BIT</p>
+        <p class="credits-line">PARA QUEM AINDA SENTE O CHEIRO DO PLÁSTICO NOVO</p>
+        <p class="credits-line">E O SOM DO DISCO GIRANDO NO PS1</p>
+        <div class="continue-prompt">
+          <button class="btn-continue" id="btn-continue">CONTINUE?</button>
+        </div>
+        <p class="copyright">© GAMEBOOK — INSERT COIN TO PLAY AGAIN</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cabinet-bottom">
+    <img src="assets/logo-mark.svg" alt="" class="footer-mark" width="48" height="48">
+    <p class="footer-slogan">Onde cada save vira história</p>
+    <div class="coin-slot" id="coin-slot" title="Clique para inserir moeda">🪙 INSERT COIN</div>
+    <div class="speaker-grill" aria-hidden="true"></div>
+    <p class="footer-text">JORGE READY — HIGH SCORE: <span id="high-score">999999</span></p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

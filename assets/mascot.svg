@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" role="img" aria-label="BitBook  mascote GameBook">
+  <defs>
+    <linearGradient id="invaderBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00D9FF"/>
+      <stop offset="55%" stop-color="#0088CC"/>
+      <stop offset="100%" stop-color="#9945FF"/>
+    </linearGradient>
+    <linearGradient id="bookLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8B8"/>
+      <stop offset="100%" stop-color="#FFD080"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="100" cy="228" rx="56" ry="8" fill="#000" opacity="0.45"/>
+
+  <!-- Open book (corpo  livro aberto) -->
+  <g filter="url(#glow)">
+    <!-- Spine -->
+    <rect x="92" y="148" width="16" height="72" rx="2" fill="#9945FF"/>
+    <rect x="94" y="150" width="12" height="68" fill="#7B3FF2"/>
+    <!-- Left page -->
+    <path d="M92 148 L92 220 L24 210 L24 138 Z" fill="url(#bookLeft)"/>
+    <rect x="30" y="152" width="52" height="3" fill="#FFAA00" opacity="0.6"/>
+    <rect x="30" y="162" width="44" height="3" fill="#C4A060" opacity="0.5"/>
+    <rect x="30" y="172" width="48" height="3" fill="#C4A060" opacity="0.5"/>
+    <rect x="30" y="182" width="40" height="3" fill="#C4A060" opacity="0.5"/>
+    <!-- Pixel heart save icon on page -->
+    <rect x="38" y="194" width="8" height="8" fill="#FF4466"/>
+    <rect x="34" y="198" width="16" height="4" fill="#FF4466"/>
+    <rect x="30" y="202" width="8" height="4" fill="#FF4466"/>
+    <rect x="46" y="202" width="8" height="4" fill="#FF4466"/>
+    <!-- Right page -->
+    <path d="M108 148 L108 220 L176 210 L176 138 Z" fill="#FFD080"/>
+    <rect x="118" y="152" width="52" height="3" fill="#FFAA00" opacity="0.6"/>
+    <!-- Mini gamepad on page -->
+    <rect x="124" y="168" width="40" height="28" rx="4" fill="#1E1A2E" stroke="#00D9FF" stroke-width="2"/>
+    <rect x="130" y="176" width="10" height="10" fill="#FF0080"/>
+    <rect x="148" y="176" width="10" height="10" fill="#66FF33"/>
+    <rect x="138" y="186" width="12" height="4" fill="#FFAA00"/>
+    <!-- Bookmark ribbon -->
+    <rect x="96" y="130" width="8" height="28" fill="#FF0080"/>
+    <polygon points="96,158 100,166 104,158" fill="#FF0080"/>
+  </g>
+
+  <!-- Space Invader head (cabeça icônica) -->
+  <g fill="url(#invaderBody)" filter="url(#glow)">
+    <!-- Row 1 -->
+    <rect x="68" y="24" width="64" height="8"/>
+    <!-- Row 2 -->
+    <rect x="56" y="32" width="16" height="8"/><rect x="88" y="32" width="16" height="8"/><rect x="120" y="32" width="16" height="8"/>
+    <!-- Row 3 -->
+    <rect x="48" y="40" width="104" height="8"/>
+    <!-- Row 4 - eyes cut -->
+    <rect x="48" y="48" width="16" height="8"/><rect x="88" y="48" width="16" height="8"/><rect x="128" y="48" width="16" height="8"/>
+    <!-- Row 5 -->
+    <rect x="40" y="56" width="120" height="8"/>
+    <!-- Row 6 -->
+    <rect x="48" y="64" width="16" height="8"/><rect x="128" y="64" width="16" height="8"/>
+    <!-- Row 7 - legs -->
+    <rect x="56" y="72" width="24" height="8"/><rect x="104" y="72" width="24" height="8"/>
+    <rect x="48" y="80" width="16" height="8"/><rect x="120" y="80" width="16" height="8"/>
+  </g>
+  <!-- Eyes -->
+  <rect x="72" y="48" width="12" height="12" fill="#0A0814"/>
+  <rect x="116" y="48" width="12" height="12" fill="#0A0814"/>
+  <rect x="76" y="52" width="4" height="4" fill="#66FF33"/>
+  <rect x="120" y="52" width="4" height="4" fill="#66FF33"/>
+
+  <!-- Arms holding book -->
+  <rect x="28" y="130" width="12" height="32" rx="2" fill="#0088CC"/>
+  <rect x="160" y="130" width="12" height="32" rx="2" fill="#0088CC"/>
+  <rect x="20" y="158" width="20" height="12" rx="2" fill="#00D9FF"/>
+  <rect x="160" y="158" width="20" height="12" rx="2" fill="#00D9FF"/>
+
+  <!-- Antenna (arcade detail) -->
+  <rect x="98" y="8" width="4" height="16" fill="#FFAA00"/>
+  <rect x="92" y="4" width="16" height="8" rx="2" fill="#FF0080"/>
+</svg>
