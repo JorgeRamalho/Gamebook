@@ -7,6 +7,9 @@
     legendName: 'LEGEND',
     storageScore: 'gameBookScore',
     storageHighScore: 'gameBookHighScore',
+    // DDI + DDD + número (somente dígitos). Ex: 5511999999999
+    whatsappNumber: '5500000000000',
+    whatsappMessage: 'Olá! Vim pelo GameBook.',
   };
 
   // ===== BOOT SCREEN =====
@@ -129,6 +132,27 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
     showToast('CONTINUE! VIDAS RESTAURADAS');
   });
+
+  // ===== BACK TO TOP =====
+  const btnTop = document.getElementById('btn-top');
+
+  function updateBtnTop() {
+    btnTop.classList.toggle('visible', window.scrollY > 400);
+  }
+
+  btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', updateBtnTop, { passive: true });
+  updateBtnTop();
+
+  // ===== WHATSAPP =====
+  const btnWhatsapp = document.getElementById('btn-whatsapp');
+  if (btnWhatsapp && CONFIG.whatsappNumber) {
+    const message = encodeURIComponent(CONFIG.whatsappMessage || '');
+    btnWhatsapp.href = 'https://wa.me/' + CONFIG.whatsappNumber + (message ? '?text=' + message : '');
+  }
 
   // ===== CARTRIDGE CLICKS =====
   const gameMessages = {

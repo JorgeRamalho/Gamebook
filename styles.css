@@ -223,7 +223,7 @@ body {
   font-family: var(--pixel-font);
   font-size: 0.55rem;
   color: var(--neon-yellow);
-  animation: marquee 25s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 @keyframes marquee {
@@ -940,6 +940,106 @@ body {
   color: var(--neon-green);
 }
 
+/* ===== BACK TO TOP ===== */
+.btn-top {
+  position: fixed;
+  left: 1rem;
+  bottom: 1.5rem;
+  z-index: 1000;
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  letter-spacing: 0.08em;
+  background: var(--gb-ink);
+  border: 3px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 0.75rem 0.65rem;
+  cursor: pointer;
+  text-shadow: 0 0 8px var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s, background 0.2s, color 0.2s, box-shadow 0.2s;
+  writing-mode: horizontal-tb;
+}
+
+.btn-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.btn-top:hover {
+  background: var(--neon-cyan);
+  color: #000;
+  text-shadow: none;
+  box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.btn-top:focus-visible {
+  outline: 2px solid var(--neon-yellow);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .btn-top {
+    left: 0.65rem;
+    bottom: 1rem;
+    font-size: 0.4rem;
+    padding: 0.65rem 0.5rem;
+  }
+}
+
+/* ===== WHATSAPP ===== */
+.btn-whatsapp {
+  position: fixed;
+  right: 1rem;
+  bottom: 1.5rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: var(--gb-ink);
+  border: 3px solid #25d366;
+  color: #25d366;
+  padding: 0.65rem;
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.3);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-whatsapp-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+.btn-whatsapp:hover {
+  background: #25d366;
+  color: #003b1a;
+  text-shadow: none;
+  box-shadow: 0 0 20px #25d366;
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp:focus-visible {
+  outline: 2px solid var(--neon-yellow);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .btn-whatsapp {
+    right: 0.65rem;
+    bottom: 1rem;
+    padding: 0.55rem;
+  }
+
+  .btn-whatsapp-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+}
+
 /* ===== TOAST ===== */
 .toast {
   position: fixed;
@@ -1030,55 +1130,6 @@ body.konami-unlocked .hero-screen {
   color: var(--gb-amber);
   margin-bottom: 1.25rem;
   text-align: center;
-}
-
-.palette-grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.swatch {
-  aspect-ratio: 1;
-  background: var(--swatch);
-  border: 2px solid var(--gb-slate);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0.5rem;
-  position: relative;
-  cursor: default;
-  transition: transform 0.2s;
-}
-
-.swatch:hover {
-  transform: scale(1.05);
-  z-index: 1;
-}
-
-.swatch::before {
-  content: attr(data-color);
-  position: absolute;
-  top: 0.5rem;
-  left: 0;
-  right: 0;
-  font-family: var(--font-display);
-  font-size: 0.32rem;
-  text-align: center;
-  color: var(--gb-ink);
-  mix-blend-mode: difference;
-  filter: invert(1);
-  padding: 0 0.25rem;
-}
-
-.swatch span {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  background: rgba(0, 0, 0, 0.65);
-  color: #fff;
-  padding: 0.15rem 0.35rem;
 }
 
 .identity-type {
