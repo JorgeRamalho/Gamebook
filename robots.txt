@@ -1,0 +1,7 @@
+# GameBook — https://jorgeramalho.github.io/Projeto-gamebook/
+# Atualize o Sitemap se mudar o domínio de publicação.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://jorgeramalho.github.io/Projeto-gamebook/sitemap.xml

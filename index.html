@@ -5,74 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GameBook — Jorge · Gamer das Old School</title>
   <meta name="description" content="GameBook — o canto de Jorge na internet. Fliperamas, fitas cassete, memory cards e a alma do gamer raiz dos anos 80, 90 e 2000.">
+  <meta name="author" content="Jorge">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="GameBook, gamer, retro, arcade, 8-bit, 16-bit, nostalgia, fliperama, Jorge, old school">
+  <meta name="theme-color" content="#0A0814">
+  <meta name="color-scheme" content="dark">
+  <!-- SITE_URL: atualize ao publicar (GitHub Pages, Netlify, domínio próprio) -->
+  <link rel="canonical" href="https://jorgeramalho.github.io/Projeto-gamebook/">
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameBook">
+  <meta property="og:title" content="GameBook — Jorge · Gamer das Old School">
+  <meta property="og:description" content="GameBook — o canto de Jorge na internet. Fliperamas, fitas cassete, memory cards e a alma do gamer raiz dos anos 80, 90 e 2000.">
+  <meta property="og:url" content="https://jorgeramalho.github.io/Projeto-gamebook/">
+  <meta property="og:image" content="https://jorgeramalho.github.io/Projeto-gamebook/assets/social/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GameBook — Onde cada save vira história. Mascote BitBook e eras 80s, 90s e 2000s.">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GameBook — Jorge · Gamer das Old School">
+  <meta name="twitter:description" content="GameBook — o canto de Jorge na internet. Fliperamas, fitas cassete, memory cards e a alma do gamer raiz dos anos 80, 90 e 2000.">
+  <meta name="twitter:image" content="https://jorgeramalho.github.io/Projeto-gamebook/assets/social/og-image.png">
+  <meta name="twitter:image:alt" content="GameBook — Onde cada save vira história">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/logo-mark.svg">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#website",
+        "name": "GameBook",
+        "url": "https://jorgeramalho.github.io/Projeto-gamebook/",
+        "description": "GameBook — o canto de Jorge na internet. Fliperamas, fitas cassete, memory cards e a alma do gamer raiz dos anos 80, 90 e 2000.",
+        "inLanguage": "pt-BR",
+        "image": "https://jorgeramalho.github.io/Projeto-gamebook/assets/social/og-image.png",
+        "publisher": { "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#person" },
+        "author": { "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#person",
+        "name": "Jorge",
+        "url": "https://jorgeramalho.github.io/Projeto-gamebook/",
+        "description": "Gamer das Old School. Arquivo pessoal de eras 80s, 90s e 2000s — fliperamas, consoles e memórias de cartucho.",
+        "image": "https://jorgeramalho.github.io/Projeto-gamebook/assets/brand/mascot.svg"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#webpage",
+        "url": "https://jorgeramalho.github.io/Projeto-gamebook/",
+        "name": "GameBook — Jorge · Gamer das Old School",
+        "isPartOf": { "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#website" },
+        "about": { "@id": "https://jorgeramalho.github.io/Projeto-gamebook/#person" },
+        "description": "Site pessoal retro com identidade arcade: linha do tempo, clássicos e o mascote BitBook.",
+        "inLanguage": "pt-BR",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://jorgeramalho.github.io/Projeto-gamebook/assets/social/og-image.png",
+          "width": 1200,
+          "height": 630
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
   <div class="crt-overlay" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
 
   <!-- Tela de boot -->
-  <div id="boot-screen" class="boot-screen">
+  <div id="boot-screen" class="boot-screen" role="dialog" aria-modal="true" aria-labelledby="boot-title" aria-describedby="boot-text">
     <div class="boot-content">
-      <img src="assets/logo-mark.svg" alt="" class="boot-mark" width="96" height="96">
-      <p class="boot-logo">GAMEBOOK</p>
+      <img src="assets/brand/logo-mark.svg" alt="" class="boot-mark" width="96" height="96">
+      <p class="boot-logo" id="boot-title">GAMEBOOK</p>
       <p class="boot-slogan">Onde cada save vira história</p>
       <p class="boot-player">JOGADOR: JORGE</p>
       <p class="boot-text" id="boot-text">INICIALIZANDO SISTEMA...</p>
-      <div class="boot-bar"><div class="boot-bar-fill" id="boot-bar"></div></div>
-      <p class="boot-hint blink">PRESSIONE QUALQUER TECLA</p>
+      <div class="boot-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="boot-text" id="boot-bar-track"><div class="boot-bar-fill" id="boot-bar"></div></div>
+      <p class="boot-hint blink" id="boot-hint">PRESSIONE QUALQUER TECLA OU ESC</p>
+      <button type="button" class="boot-skip" id="boot-skip">PULAR INTRO</button>
     </div>
   </div>
 
-  <header class="cabinet-top">
-    <div class="marquee">
+  <header class="cabinet-top" id="site-header">
+    <div class="marquee" aria-hidden="true">
       <span>★ PAC-MAN ★ BOMBERMAN ★ CONTRA ★ STREET FIGHTER II ★ SONIC ★ MEGA MAN X ★ CASTLEVANIA ★ CRASH ★ FINAL FANTASY VII ★ TEKKEN 3 ★ HALO ★ DONKEY KONG ★ SUPER MARIO ★ ZELDA ★ GHOSTS 'N GOBLINS ★ CHRONO TRIGGER ★ MARIO KART 64 ★ METAL GEAR SOLID ★ GTA III ★ COUNTER-STRIKE ★ WORLD OF WARCRAFT ★ MORTAL KOMBAT ★ DOOM ★ RESIDENT EVIL ★ SPYRO ★ TOMB RAIDER ★ GOLDENEYE 64 ★ POKÉMON ★ EARTHBOUND ★ KINGDOM HEARTS ★ DEVIL MAY CRY ★ GOD OF WAR ★ METROID ★ GALAGA ★ DIG DUG ★ SILENT HILL ★ SUPER SMASH BROS ★ SECRET OF MANA ★ FINAL FANTASY X ★ QUAKE ★ PUNCH-OUT ★ &nbsp;&nbsp;&nbsp; ★ PAC-MAN ★ BOMBERMAN ★ CONTRA ★ STREET FIGHTER II ★ SONIC ★ MEGA MAN X ★ CASTLEVANIA ★ CRASH ★ FINAL FANTASY VII ★ TEKKEN 3 ★ HALO ★ DONKEY KONG ★ SUPER MARIO ★ ZELDA ★ GHOSTS 'N GOBLINS ★ CHRONO TRIGGER ★ MARIO KART 64 ★ METAL GEAR SOLID ★ GTA III ★ COUNTER-STRIKE ★ WORLD OF WARCRAFT ★ MORTAL KOMBAT ★ DOOM ★ RESIDENT EVIL ★ SPYRO ★ TOMB RAIDER ★ GOLDENEYE 64 ★ POKÉMON ★ EARTHBOUND ★ KINGDOM HEARTS ★ DEVIL MAY CRY ★ GOD OF WAR ★ METROID ★ GALAGA ★ DIG DUG ★ SILENT HILL ★ SUPER SMASH BROS ★ SECRET OF MANA ★ FINAL FANTASY X ★ QUAKE ★ PUNCH-OUT ★</span>
     </div>
-    <div class="brand-bar">
-      <a href="#inicio" class="brand-bar-link">
-        <img src="assets/logo-mark.svg" alt="" class="brand-mark" width="40" height="40">
-        <div class="brand-wordmark">
-          <span class="brand-name">
-            <span class="brand-name-game">GAME</span>
-            <span class="brand-name-book">BOOK</span>
-          </span>
-          <span class="brand-tagline">Onde cada save vira história</span>
-        </div>
-      </a>
-    </div>
-    <nav class="nav">
-      <a href="#inicio" class="nav-link">INÍCIO</a>
-      <a href="#marca" class="nav-link">MARCA</a>
-      <a href="#sobre" class="nav-link">SOBRE</a>
-      <a href="#eras" class="nav-link">ERAS</a>
-      <a href="#classicos" class="nav-link">CLÁSSICOS</a>
-      <a href="#setup" class="nav-link">SETUP</a>
-      <a href="#creditos" class="nav-link">CRÉDITOS</a>
-    </nav>
-    <div class="hud">
-      <span class="hud-item">JOGADOR: <strong id="player-name">JORGE</strong></span>
-      <span class="hud-item">SCORE: <strong id="score">000000</strong></span>
-      <span class="hud-item">VIDAS: <strong id="lives">♥♥♥</strong></span>
+    <div class="header-main">
+      <div class="brand-bar">
+        <a href="#inicio" class="brand-bar-link">
+          <img src="assets/brand/logo-mark.svg" alt="" class="brand-mark" width="40" height="40">
+          <div class="brand-wordmark">
+            <span class="brand-name">
+              <span class="brand-name-game">GAME</span>
+              <span class="brand-name-book">BOOK</span>
+            </span>
+            <span class="brand-tagline">Onde cada save vira história</span>
+          </div>
+        </a>
+      </div>
+      <nav class="nav" aria-label="Seções do site">
+        <a href="#inicio" class="nav-link">INÍCIO</a>
+        <a href="#marca" class="nav-link">MARCA</a>
+        <a href="#sobre" class="nav-link">SOBRE</a>
+        <a href="#eras" class="nav-link">ERAS</a>
+        <a href="#classicos" class="nav-link">CLÁSSICOS</a>
+        <a href="#setup" class="nav-link">SETUP</a>
+        <a href="#creditos" class="nav-link">CRÉDITOS</a>
+      </nav>
+      <div class="hud" aria-live="polite">
+        <span class="hud-item">JOGADOR: <strong id="player-name">JORGE</strong></span>
+        <span class="hud-item">SCORE: <strong id="score">000000</strong></span>
+        <span class="hud-item">VIDAS: <strong id="lives">♥♥♥</strong></span>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section id="inicio" class="hero">
+  <main id="conteudo">
+    <section id="inicio" class="hero" tabindex="-1">
       <div class="hero-layout">
-        <img src="assets/mascot.svg" alt="BitBook — mascote GameBook, invader pixel abraçando um livro aberto" class="hero-mascot" width="200" height="240">
+        <img src="assets/brand/mascot.svg" alt="BitBook — mascote GameBook, invader pixel abraçando um livro aberto" class="hero-mascot" width="200" height="240">
         <div class="hero-screen">
           <h1 class="visually-hidden">GameBook — Onde cada save vira história</h1>
-          <img src="assets/logo-slogan.svg" alt="GameBook — Onde cada save vira história" class="hero-brand" width="480" height="140">
+          <img src="assets/brand/logo-slogan.svg" alt="GameBook — Onde cada save vira história" class="hero-brand" width="480" height="140">
           <p class="hero-tagline">80s · 90s · 2000s</p>
           <p class="hero-intro">
             Bem-vindo ao arquivo pessoal de quem aprendeu a jogar antes do tutorial,
             soprou cartucho sem vergonha e tratou cada crédito como ouro.
           </p>
-          <button class="btn-start blink" id="btn-start">▶ PRESS START</button>
+          <button type="button" class="btn-start blink" id="btn-start">▶ PRESS START</button>
           <p class="konami-hint">↑↑↓↓←→←→BA = segredo</p>
         </div>
       </div>
@@ -84,27 +160,40 @@
     </section>
 
     <section id="marca" class="section identity" aria-labelledby="marca-title">
-      <h2 id="marca-title" class="section-title">▌ IDENTIDADE VISUAL ▐</h2>
-      <p class="section-desc">BitBook — invader pixel + livro aberto. A figura-símbolo do GameBook.</p>
+      <h2 id="marca-title" class="section-title">▌ BITBOOK &amp; MARCA ▐</h2>
+      <p class="section-desc">
+        A cara do GameBook: invader pixel + livro aberto. Aqui você encontra a marca,
+        o mascote e as tipografias que carregam a nostalgia arcade.
+      </p>
 
       <div class="identity-logos">
         <figure class="identity-card">
-          <img src="assets/logo-mark.svg" alt="Marca GameBook — ícone" width="64" height="64" loading="lazy" decoding="async">
+          <img src="assets/brand/logo-mark.svg" alt="Marca GameBook — ícone" width="64" height="64" loading="lazy" decoding="async">
           <figcaption>Marca</figcaption>
         </figure>
         <figure class="identity-card identity-card-wide">
-          <img src="assets/logo-full.svg" alt="Logo GameBook" width="420" height="100" loading="lazy" decoding="async">
+          <img src="assets/brand/logo-full.svg" alt="Logo GameBook" width="420" height="100" loading="lazy" decoding="async">
           <figcaption>Logo</figcaption>
         </figure>
         <figure class="identity-card identity-card-wide">
-          <img src="assets/logo-slogan.svg" alt="Logo GameBook com slogan — Onde cada save vira história" width="480" height="140" loading="lazy" decoding="async">
+          <img src="assets/brand/logo-slogan.svg" alt="Logo GameBook com slogan — Onde cada save vira história" width="480" height="140" loading="lazy" decoding="async">
           <figcaption>Logo + slogan</figcaption>
         </figure>
         <figure class="identity-card">
-          <img src="assets/mascot.svg" alt="BitBook — mascote GameBook" width="200" height="240" loading="lazy" decoding="async">
+          <img src="assets/brand/mascot.svg" alt="BitBook — mascote GameBook" width="200" height="240" loading="lazy" decoding="async">
           <figcaption>BitBook</figcaption>
         </figure>
       </div>
+
+      <h3 id="palette-title" class="identity-subtitle identity-subtitle-palette">Paleta</h3>
+      <ul class="identity-palette" aria-labelledby="palette-title">
+        <li><span class="swatch" style="--swatch:#00d9ff"></span><span class="swatch-label">Cyan</span></li>
+        <li><span class="swatch" style="--swatch:#ff0080"></span><span class="swatch-label">Magenta</span></li>
+        <li><span class="swatch" style="--swatch:#ffaa00"></span><span class="swatch-label">Amber</span></li>
+        <li><span class="swatch" style="--swatch:#66ff33"></span><span class="swatch-label">Lime</span></li>
+        <li><span class="swatch" style="--swatch:#9945ff"></span><span class="swatch-label">Violet</span></li>
+        <li><span class="swatch" style="--swatch:#0a0814"></span><span class="swatch-label">Ink</span></li>
+      </ul>
 
       <div class="identity-type">
         <h3 class="identity-subtitle">Tipografia</h3>
@@ -147,7 +236,7 @@
       <div class="timeline">
         <article class="era-card" data-era="80s">
           <div class="era-badge">1980–1989</div>
-          <h3>ARCADE & 8-BIT</h3>
+          <h3>ARCADE &amp; 8-BIT</h3>
           <p>
             Fliperama de bairro, fita cassete demorando pra carregar e a primeira
             vez que seguramos um controle retangular. Cada crédito era uma missão.
@@ -165,7 +254,7 @@
 
         <article class="era-card" data-era="90s">
           <div class="era-badge">1990–1999</div>
-          <h3>16-BIT & REVOLUÇÃO</h3>
+          <h3>16-BIT &amp; REVOLUÇÃO</h3>
           <p>
             Sega vs Nintendo na escola, <em>HADOUKEN!</em> no fliperama e o salto
             pro 3D. RPGs épicos, plataformas perfeitas e a guerra dos botões
@@ -184,7 +273,7 @@
 
         <article class="era-card" data-era="2000s">
           <div class="era-badge">2000–2009</div>
-          <h3>ONLINE & BLOCKBUSTER</h3>
+          <h3>ONLINE &amp; BLOCKBUSTER</h3>
           <p>
             LAN party na casa do amigo, Xbox Live, MMOs e jogos que pareciam
             filme. O hobby virou cultura pop — e a gente já estava pronta.
@@ -204,32 +293,32 @@
 
     <section id="classicos" class="section classics">
       <h2 class="section-title">▌ SALA DE TROFÉUS ▐</h2>
-      <p class="section-desc">Clique nos cartuchos — cada um guarda uma memória.</p>
+      <p class="section-desc">Ative os cartuchos — cada um guarda uma memória.</p>
       <div class="game-grid">
-        <div class="game-cartridge" data-game="mario">
-          <div class="cart-label">SUPER MARIO</div>
-          <div class="cart-body"></div>
-        </div>
-        <div class="game-cartridge" data-game="zelda">
-          <div class="cart-label">ZELDA</div>
-          <div class="cart-body"></div>
-        </div>
-        <div class="game-cartridge" data-game="sonic">
-          <div class="cart-label">SONIC</div>
-          <div class="cart-body"></div>
-        </div>
-        <div class="game-cartridge" data-game="sf2">
-          <div class="cart-label">SF II</div>
-          <div class="cart-body"></div>
-        </div>
-        <div class="game-cartridge" data-game="megaman">
-          <div class="cart-label">MEGA MAN</div>
-          <div class="cart-body"></div>
-        </div>
-        <div class="game-cartridge" data-game="crash">
-          <div class="cart-label">CRASH</div>
-          <div class="cart-body"></div>
-        </div>
+        <button type="button" class="game-cartridge" data-game="mario" aria-label="Cartucho Super Mario">
+          <span class="cart-label">SUPER MARIO</span>
+          <span class="cart-body" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="game-cartridge" data-game="zelda" aria-label="Cartucho Zelda">
+          <span class="cart-label">ZELDA</span>
+          <span class="cart-body" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="game-cartridge" data-game="sonic" aria-label="Cartucho Sonic">
+          <span class="cart-label">SONIC</span>
+          <span class="cart-body" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="game-cartridge" data-game="sf2" aria-label="Cartucho Street Fighter II">
+          <span class="cart-label">SF II</span>
+          <span class="cart-body" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="game-cartridge" data-game="megaman" aria-label="Cartucho Mega Man">
+          <span class="cart-label">MEGA MAN</span>
+          <span class="cart-body" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="game-cartridge" data-game="crash" aria-label="Cartucho Crash">
+          <span class="cart-label">CRASH</span>
+          <span class="cart-body" aria-hidden="true"></span>
+        </button>
       </div>
       <p class="classics-quote">"Um save point não apaga as memórias."</p>
     </section>
@@ -238,32 +327,44 @@
       <h2 class="section-title">▌ SETUP DO GAMEBOOK ▐</h2>
       <div class="setup-grid">
         <div class="setup-item">
-          <span class="setup-icon">📺</span>
+          <span class="setup-icon" aria-hidden="true">
+            <img src="assets/icons/crt.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+          </span>
           <h4>TV de Tubo</h4>
           <p>Scanlines naturais. Nenhum filtro digital substitui a CRT da infância.</p>
         </div>
         <div class="setup-item">
-          <span class="setup-icon">🎮</span>
+          <span class="setup-icon" aria-hidden="true">
+            <img src="assets/icons/controller.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+          </span>
           <h4>Controle com Fio</h4>
           <p>Zero lag. Zero bateria. Marca de dedo no analógico — prova de uso.</p>
         </div>
         <div class="setup-item">
-          <span class="setup-icon">💾</span>
+          <span class="setup-icon" aria-hidden="true">
+            <img src="assets/icons/memory-card.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+          </span>
           <h4>Memory Card</h4>
           <p>Cada slot guardava horas de vida. Apagar save era drama real.</p>
         </div>
         <div class="setup-item">
-          <span class="setup-icon">📖</span>
+          <span class="setup-icon" aria-hidden="true">
+            <img src="assets/icons/manual.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+          </span>
           <h4>Manual Físico</h4>
           <p>Mapas dobrados, códigos secretos e cheiro de papel novo.</p>
         </div>
         <div class="setup-item">
-          <span class="setup-icon">👾</span>
+          <span class="setup-icon" aria-hidden="true">
+            <img src="assets/icons/magazine.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+          </span>
           <h4>Revista Impressa</h4>
           <p>Ação Games, Nintendo World — dicas rabiscadas na margem.</p>
         </div>
         <div class="setup-item">
-          <span class="setup-icon">🕹️</span>
+          <span class="setup-icon" aria-hidden="true">
+            <img src="assets/icons/arcade.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+          </span>
           <h4>Fliperama Local</h4>
           <p>Onde nasceu a rivalidade de verdade. Fila pra jogar SF II.</p>
         </div>
@@ -277,7 +378,7 @@
         <p class="credits-line">PARA QUEM AINDA SENTE O CHEIRO DO PLÁSTICO NOVO</p>
         <p class="credits-line">E O SOM DO DISCO GIRANDO NO PS1</p>
         <div class="continue-prompt">
-          <button class="btn-continue" id="btn-continue">CONTINUE?</button>
+          <button type="button" class="btn-continue" id="btn-continue">CONTINUE?</button>
         </div>
         <p class="copyright">© GAMEBOOK — INSERT COIN TO PLAY AGAIN</p>
       </div>
@@ -285,9 +386,9 @@
   </main>
 
   <footer class="cabinet-bottom">
-    <img src="assets/logo-mark.svg" alt="" class="footer-mark" width="48" height="48">
+    <img src="assets/brand/logo-mark.svg" alt="" class="footer-mark" width="48" height="48">
     <p class="footer-slogan">Onde cada save vira história</p>
-    <div class="coin-slot" id="coin-slot" title="Clique para inserir moeda">🪙 INSERT COIN</div>
+    <button type="button" class="coin-slot" id="coin-slot" aria-label="Inserir moeda" title="Inserir moeda">🪙 INSERT COIN</button>
     <div class="speaker-grill" aria-hidden="true"></div>
     <p class="footer-text">JORGE READY — HIGH SCORE: <span id="high-score">999999</span></p>
   </footer>
@@ -296,12 +397,13 @@
 
   <a
     id="btn-whatsapp"
-    class="btn-whatsapp"
-    href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20GameBook."
+    class="btn-whatsapp is-hidden"
+    href="#"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Conversar no WhatsApp"
     title="WhatsApp"
+    hidden
   >
     <svg class="btn-whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.85 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -310,6 +412,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -7,15 +7,44 @@
     legendName: 'LEGEND',
     storageScore: 'gameBookScore',
     storageHighScore: 'gameBookHighScore',
+    // URL canônica de publicação (manter alinhada a index.html, robots.txt e sitemap.xml)
+    siteUrl: 'https://jorgeramalho.github.io/Projeto-gamebook/',
     // DDI + DDD + número (somente dígitos). Ex: 5511999999999
-    whatsappNumber: '5500000000000',
+    // Deixe vazio ou o placeholder para ocultar o botão WhatsApp.
+    whatsappNumber: '',
     whatsappMessage: 'Olá! Vim pelo GameBook.',
+    whatsappPlaceholder: '5500000000000',
   };
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function smoothScrollTo(options) {
+    if (prefersReducedMotion) {
+      const top = typeof options.top === 'number' ? options.top : undefined;
+      if (top != null) {
+        window.scrollTo(0, top);
+        onScrollChrome();
+        return;
+      }
+      if (options.el) {
+        options.el.scrollIntoView();
+        onScrollChrome();
+      }
+      return;
+    }
+    if (options.el) {
+      options.el.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    window.scrollTo({ top: options.top || 0, behavior: 'smooth' });
+  }
 
   // ===== BOOT SCREEN =====
   const bootScreen = document.getElementById('boot-screen');
   const bootText = document.getElementById('boot-text');
   const bootBar = document.getElementById('boot-bar');
+  const bootBarTrack = document.getElementById('boot-bar-track');
+  const bootSkip = document.getElementById('boot-skip');
 
   const bootMessages = [
     'CARREGANDO MEMÓRIAS DE JORGE...',
@@ -27,11 +56,29 @@
 
   let bootIndex = 0;
   let bootProgress = 0;
+  let bootDone = false;
+
+  function setBootProgress(value) {
+    bootProgress = Math.min(100, value);
+    bootBar.style.width = bootProgress + '%';
+    if (bootBarTrack) {
+      bootBarTrack.setAttribute('aria-valuenow', String(Math.round(bootProgress)));
+    }
+  }
+
+  function finishBootReady() {
+    if (bootDone) return;
+    bootDone = true;
+    setBootProgress(100);
+    bootText.textContent = 'PRESSIONE QUALQUER TECLA, ESC OU PULAR INTRO';
+    if (bootSkip) {
+      bootSkip.focus({ preventScroll: true });
+    }
+  }
 
   function runBootSequence() {
     const interval = setInterval(() => {
-      bootProgress += 4;
-      bootBar.style.width = bootProgress + '%';
+      setBootProgress(bootProgress + 4);
 
       if (bootProgress >= 20 * (bootIndex + 1) && bootIndex < bootMessages.length) {
         bootText.textContent = bootMessages[bootIndex];
@@ -40,21 +87,69 @@
 
       if (bootProgress >= 100) {
         clearInterval(interval);
-        bootText.textContent = 'PRESSIONE QUALQUER TECLA';
+        finishBootReady();
       }
-    }, 80);
+    }, prefersReducedMotion ? 20 : 80);
   }
 
   function dismissBoot() {
-    if (bootProgress < 100) return;
+    if (bootProgress < 100 && !bootDone) {
+      // Escape / Pular intro podem forçar o fim
+      setBootProgress(100);
+      bootDone = true;
+    }
     bootScreen.classList.add('hidden');
-    document.removeEventListener('keydown', dismissBoot);
-    bootScreen.removeEventListener('click', dismissBoot);
+    bootScreen.setAttribute('aria-hidden', 'true');
+    bootScreen.removeAttribute('aria-modal');
+    document.removeEventListener('keydown', onBootKey);
+    bootScreen.removeEventListener('click', onBootClick);
+    if (bootSkip) bootSkip.removeEventListener('click', onBootSkip);
+    const mainStart = document.getElementById('inicio');
+    if (mainStart) {
+      mainStart.focus({ preventScroll: true });
+    }
+  }
+
+  function onBootKey(e) {
+    if (e.key === 'Tab') {
+      // Mantém o foco no diálogo de boot (skip é o único controle)
+      e.preventDefault();
+      if (bootSkip) bootSkip.focus({ preventScroll: true });
+      return;
+    }
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      dismissBoot();
+      return;
+    }
+    if (bootProgress < 100 && !bootDone) return;
+    dismissBoot();
+  }
+
+  function onBootClick(e) {
+    if (bootSkip && (e.target === bootSkip || bootSkip.contains(e.target))) return;
+    if (bootProgress < 100 && !bootDone) return;
+    dismissBoot();
+  }
+
+  function onBootSkip(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dismissBoot();
   }
 
   runBootSequence();
-  document.addEventListener('keydown', dismissBoot);
-  bootScreen.addEventListener('click', dismissBoot);
+  document.addEventListener('keydown', onBootKey);
+  bootScreen.addEventListener('click', onBootClick);
+  if (bootSkip) {
+    bootSkip.addEventListener('click', onBootSkip);
+    // Foco inicial no controle de pular (acessível desde o início)
+    window.setTimeout(() => {
+      if (!bootScreen.classList.contains('hidden')) {
+        bootSkip.focus({ preventScroll: true });
+      }
+    }, 50);
+  }
 
   // ===== SCORE SYSTEM =====
   const scoreEl = document.getElementById('score');
@@ -105,6 +200,19 @@
     toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
   }
 
+  // ===== HEADER COMPACT ON SCROLL =====
+  const siteHeader = document.getElementById('site-header');
+
+  function updateHeaderCompact() {
+    if (!siteHeader) return;
+    siteHeader.classList.toggle('is-compact', window.scrollY > 48);
+  }
+
+  function onScrollChrome() {
+    updateBtnTop();
+    updateHeaderCompact();
+  }
+
   // ===== COIN SLOT =====
   const coinSlot = document.getElementById('coin-slot');
   let coinCount = 0;
@@ -119,7 +227,8 @@
 
   // ===== PRESS START =====
   document.getElementById('btn-start').addEventListener('click', () => {
-    document.getElementById('sobre').scrollIntoView({ behavior: 'smooth' });
+    const sobre = document.getElementById('sobre');
+    smoothScrollTo({ el: sobre });
     addScore(500);
     showToast('GAME START! BEM-VINDO, ' + CONFIG.playerName + '!');
   });
@@ -129,7 +238,7 @@
     lives = 3;
     updateHUD();
     addScore(1000);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    smoothScrollTo({ top: 0 });
     showToast('CONTINUE! VIDAS RESTAURADAS');
   });
 
@@ -141,17 +250,39 @@
   }
 
   btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    smoothScrollTo({ top: 0 });
   });
 
-  window.addEventListener('scroll', updateBtnTop, { passive: true });
-  updateBtnTop();
+  window.addEventListener('scroll', onScrollChrome, { passive: true });
+  onScrollChrome();
 
   // ===== WHATSAPP =====
   const btnWhatsapp = document.getElementById('btn-whatsapp');
-  if (btnWhatsapp && CONFIG.whatsappNumber) {
-    const message = encodeURIComponent(CONFIG.whatsappMessage || '');
-    btnWhatsapp.href = 'https://wa.me/' + CONFIG.whatsappNumber + (message ? '?text=' + message : '');
+
+  function isWhatsappConfigured(number) {
+    if (!number || typeof number !== 'string') return false;
+    const digits = number.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 15) return false;
+    if (digits === CONFIG.whatsappPlaceholder) return false;
+    if (/^0+$/.test(digits)) return false;
+    if (/^55?0{8,}$/.test(digits)) return false;
+    return true;
+  }
+
+  if (btnWhatsapp) {
+    if (isWhatsappConfigured(CONFIG.whatsappNumber)) {
+      const digits = CONFIG.whatsappNumber.replace(/\D/g, '');
+      const message = encodeURIComponent(CONFIG.whatsappMessage || '');
+      btnWhatsapp.href = 'https://wa.me/' + digits + (message ? '?text=' + message : '');
+      btnWhatsapp.hidden = false;
+      btnWhatsapp.removeAttribute('hidden');
+      btnWhatsapp.classList.remove('is-hidden');
+    } else {
+      btnWhatsapp.hidden = true;
+      btnWhatsapp.setAttribute('hidden', '');
+      btnWhatsapp.classList.add('is-hidden');
+      btnWhatsapp.removeAttribute('href');
+    }
   }
 
   // ===== CARTRIDGE CLICKS =====
@@ -187,6 +318,7 @@
   let konamiIndex = 0;
 
   document.addEventListener('keydown', (e) => {
+    if (!bootScreen.classList.contains('hidden')) return;
     if (e.code === konamiCode[konamiIndex]) {
       konamiIndex++;
       if (konamiIndex === konamiCode.length) {
@@ -261,14 +393,18 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           navLinks.forEach(link => {
-            link.style.color = link.getAttribute('href') === '#' + entry.target.id
-              ? 'var(--neon-yellow)'
-              : '';
+            const active = link.getAttribute('href') === '#' + entry.target.id;
+            link.style.color = active ? 'var(--neon-yellow)' : '';
+            if (active) {
+              link.setAttribute('aria-current', 'true');
+            } else {
+              link.removeAttribute('aria-current');
+            }
           });
         }
       });
     },
-    { threshold: 0.4 }
+    { threshold: 0.35, rootMargin: '-10% 0px -40% 0px' }
   );
 
   sections.forEach(s => observer.observe(s));

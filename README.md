@@ -5,79 +5,90 @@
 
 Site retro com identidade visual arcade e a alma dos fliperamas e consoles das décadas de 80, 90 e 2000.
 
-## Identidade visual
+## Documentação
 
-| Ativo | Arquivo |
-|-------|---------|
-| Marca (ícone) | `assets/logo-mark.svg` |
-| Logo | `assets/logo-full.svg` |
-| Logo + slogan | `assets/logo-slogan.svg` |
-| Mascote BitBook | `assets/mascot.svg` |
-| Favicon | `assets/favicon.svg` |
+Comece por [`docs/00-indice.md`](docs/00-indice.md).
 
-### Paleta
-
-| Nome | Hex | Uso |
-|------|-----|-----|
-| CRT Cyan | `#00D9FF` | Primária, glow arcade |
-| Arcade Magenta | `#FF0080` | Ação, destaques |
-| Cartucho Amber | `#FFAA00` | Livro, calor nostálgico |
-| HUD Lime | `#66FF33` | Score, vidas |
-| PS Violet | `#9945FF` | Profundidade, PS1 era |
-| Página Paper | `#FFE8B8` | Páginas do livro |
-| Cabinet Ink | `#0A0814` | Fundo principal |
-
-### Tipografia
-
-- **Display / logo:** Press Start 2P
-- **Corpo / slogan:** VT323
-
-## Como abrir
-
-Abra o arquivo `index.html` no navegador, ou use um servidor local:
-
-```bash
-# Com Python
-python -m http.server 8080
-
-# Com Node (npx)
-npx serve .
-```
-
-Depois acesse: http://localhost:8080
-
-## Personalização
-
-| O quê | Onde editar |
-|-------|-------------|
-| Nome do jogador | `index.html` (HUD, boot, sobre) + `script.js` → `CONFIG.playerName` |
-| Textos e jogos | `index.html` |
-| Visual / cores | `styles.css` → variáveis `:root` |
-| Interações e score | `script.js` |
-
-## Recursos
-
-- Tela de boot com nome do jogador
-- Seção **SOBRE** com história do gamer raiz
-- Efeito CRT com scanlines
-- Linha do tempo das 3 eras (80s, 90s, 2000s)
-- Cartuchos clicáveis com easter eggs
-- Sistema de pontuação com high score (salvo no navegador)
-- Código Konami secreto: ↑↑↓↓←→←→BA
-- Sons 8-bit ao inserir moeda e clicar nos jogos
+| Doc | Assunto |
+|-----|---------|
+| [Auditoria](docs/01-auditoria.md) | SEO, UX/UI, responsividade (Playwright) |
+| [Estrutura](docs/02-estrutura.md) | Pastas e convenções |
+| [Identidade visual](docs/03-identidade-visual.md) | Marca, paleta, tipografia |
+| [Roadmap](docs/04-roadmap.md) | Plano de adequação |
+| [Portfólio](docs/05-mapeamento-portfolio.md) | Contexto em `Fron_End/Projetos` |
+| [SEO](docs/06-seo.md) | Canonical, OG/Twitter, deploy |
+| [Decisão marca](docs/07-decisao-marca.md) | Por que `#marca` fica no site |
+| [Engenharia](docs/08-engenharia.md) | npm, lint, CI |
 
 ## Estrutura
 
 ```
-retro-gamer-site/
-├── assets/
-│   ├── logo-mark.svg
-│   ├── logo-full.svg
-│   ├── logo-slogan.svg
-│   ├── mascot.svg
-│   └── favicon.svg
+Projeto-Gamebook/
 ├── index.html
-├── styles.css
-├── script.js
+├── robots.txt
+├── sitemap.xml
+├── package.json
+├── css/styles.css
+├── js/script.js
+├── assets/brand/
+├── assets/icons/
+├── assets/social/
+├── scripts/check-site-url.mjs
+├── .github/workflows/ci.yml
+├── docs/
 └── README.md
 ```
+
+## Como abrir
+
+```bash
+npm install
+npm run serve
+# → http://localhost:5502
+```
+
+Alternativa: Live Server / `npx serve .`
+
+Publicação sugerida (GitHub Pages): `https://jorgeramalho.github.io/Projeto-gamebook/` — detalhes em [`docs/06-seo.md`](docs/06-seo.md).
+
+## Scripts
+
+| Comando | Uso |
+|---------|-----|
+| `npm run serve` | Servidor local (porta 5502) |
+| `npm run lint` | Valida HTML, CSS, JS e SITE_URL |
+| `npm run ci` | Mesmo que lint (GitHub Actions) |
+
+## Checklist pré-deploy
+
+- [ ] `npm run lint` OK
+- [ ] URL canônica alinhada (`index.html`, `robots.txt`, `sitemap.xml`, `CONFIG.siteUrl`)
+- [ ] WhatsApp configurado **ou** deixado vazio (botão oculto)
+- [ ] `og-image.png` no ar via HTTPS
+- [ ] GitHub Pages / host apontando para a raiz
+- [ ] Smoke test: boot, nav mobile, cartuchos, score
+- [ ] (Opcional) Preview social nos validadores Facebook/X
+
+Guia completo: [`docs/08-engenharia.md`](docs/08-engenharia.md) + [`docs/06-seo.md`](docs/06-seo.md).
+
+## Personalização
+
+| O quê | Onde |
+|-------|------|
+| Nome do jogador | `index.html` + `js/script.js` → `CONFIG.playerName` |
+| URL canônica | `index.html` + `robots.txt` + `sitemap.xml` + `CONFIG.siteUrl` |
+| WhatsApp | `js/script.js` → `CONFIG.whatsappNumber` (vazio = botão oculto) |
+| Textos e jogos | `index.html` |
+| Cores / tokens | `css/styles.css` → `:root` |
+| Interações e score | `js/script.js` |
+
+## Recursos
+
+- Tela de boot com nome do jogador
+- Efeito CRT com scanlines
+- Linha do tempo 80s / 90s / 2000s
+- Cartuchos clicáveis e código Konami
+- Score com high score em `localStorage`
+- Sons 8-bit (Web Audio API)
+- SEO: Open Graph, Twitter Cards, JSON-LD, sitemap
+- Lint + CI (html-validate, stylelint, ESLint)

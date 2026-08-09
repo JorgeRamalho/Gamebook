@@ -56,6 +56,30 @@
   border: 0;
 }
 
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  background: var(--gb-amber);
+  color: #000;
+  text-decoration: none;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.is-hidden,
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -192,6 +216,31 @@ body {
   color: var(--neon-yellow);
 }
 
+.boot-skip {
+  margin-top: 1.25rem;
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  letter-spacing: 0.08em;
+  background: transparent;
+  border: 2px solid var(--gb-cyan);
+  color: var(--gb-cyan);
+  padding: 0.75rem 1.1rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.boot-skip:hover,
+.boot-skip:focus-visible {
+  background: var(--gb-cyan);
+  color: #000;
+  outline: none;
+}
+
+.boot-skip:focus-visible {
+  outline: 2px solid var(--gb-amber);
+  outline-offset: 3px;
+}
+
 .blink {
   animation: blink 1s step-end infinite;
 }
@@ -208,20 +257,29 @@ body {
   background: linear-gradient(180deg, #1a1a2e 0%, var(--bg-panel) 100%);
   border-bottom: 4px solid var(--neon-magenta);
   box-shadow: 0 4px 20px rgba(255, 0, 170, 0.3);
+  transition: box-shadow 0.25s ease;
+}
+
+.header-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
 }
 
 .marquee {
   overflow: hidden;
   background: #000;
-  padding: 0.5rem 0;
+  padding: 0.35rem 0;
   border-bottom: 2px solid var(--neon-yellow);
+  max-height: 2.5rem;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.25s ease, border-width 0.25s ease;
 }
 
 .marquee span {
   display: inline-block;
   white-space: nowrap;
   font-family: var(--pixel-font);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--neon-yellow);
   animation: marquee 45s linear infinite;
 }
@@ -235,37 +293,121 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  padding: 1rem;
+  gap: 0.25rem 0.75rem;
+  padding: 0.5rem 0.75rem;
+  transition: padding 0.25s ease;
 }
 
 .nav-link {
   font-family: var(--pixel-font);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--neon-cyan);
   text-decoration: none;
-  padding: 0.5rem;
+  padding: 0.65rem 0.55rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color 0.2s, text-shadow 0.2s;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus-visible {
   color: var(--neon-yellow);
   text-shadow: 0 0 8px var(--neon-yellow);
+  outline: none;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--neon-yellow);
+  outline-offset: 2px;
 }
 
 .hud {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem 2rem;
-  padding: 0.75rem 1rem 1rem;
-  font-size: 1.1rem;
+  gap: 0.5rem 1.25rem;
+  padding: 0.45rem 1rem 0.55rem;
+  font-size: 1rem;
   color: var(--text-dim);
   border-top: 1px solid #333;
+  transition: padding 0.25s ease, font-size 0.25s ease;
 }
 
 .hud strong {
   color: var(--neon-green);
+}
+
+/* Compact header on scroll */
+.cabinet-top.is-compact {
+  box-shadow: 0 2px 12px rgba(255, 0, 170, 0.2);
+}
+
+.cabinet-top.is-compact .marquee {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  border-bottom-width: 0;
+  pointer-events: none;
+}
+
+.cabinet-top.is-compact .brand-bar {
+  padding: 0.4rem 0.75rem;
+}
+
+.cabinet-top.is-compact .brand-mark {
+  width: 28px;
+  height: 28px;
+}
+
+.cabinet-top.is-compact .brand-tagline {
+  display: none;
+}
+
+.cabinet-top.is-compact .nav {
+  padding: 0.25rem 0.5rem;
+}
+
+.cabinet-top.is-compact .nav-link {
+  min-height: 44px;
+  padding: 0.45rem 0.4rem;
+}
+
+.cabinet-top.is-compact .hud {
+  padding: 0.3rem 0.75rem 0.4rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 899px) {
+  .cabinet-top.is-compact .hud {
+    display: none;
+  }
+
+  .cabinet-top.is-compact .nav {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0.15rem;
+    padding: 0.2rem 0.5rem 0.35rem;
+    scrollbar-width: none;
+  }
+
+  .cabinet-top.is-compact .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cabinet-top.is-compact .nav-link {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.4rem;
+  }
+
+  .cabinet-top.is-compact .header-main {
+    border-top: 1px solid #333;
+  }
 }
 
 /* ===== HERO ===== */
@@ -288,9 +430,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  padding: 0.85rem 1rem;
+  padding: 0.55rem 1rem;
   background: var(--gb-midnight);
   border-bottom: 2px solid var(--gb-slate);
+  transition: padding 0.25s ease;
 }
 
 .brand-bar-link {
@@ -305,25 +448,35 @@ body {
   filter: brightness(1.15);
 }
 
+.brand-bar-link:focus-visible {
+  outline: 2px solid var(--neon-yellow);
+  outline-offset: 3px;
+}
+
 .brand-mark {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
+  transition: width 0.25s ease, height 0.25s ease;
 }
 
 .brand-wordmark {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.1rem;
 }
 
 .brand-name {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.35em;
   font-family: var(--font-display);
-  font-size: 0.55rem;
-  line-height: 1.4;
-  letter-spacing: 0.12em;
+  font-size: clamp(0.75rem, 2.2vw, 0.9rem);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .brand-name-game {
@@ -336,7 +489,7 @@ body {
 
 .brand-tagline {
   font-family: var(--font-slogan);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-dim);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -446,7 +599,6 @@ body {
 
 .konami-hint {
   margin-top: 2rem;
-  font-size: 0.9rem;
   color: #444;
   font-family: var(--pixel-font);
   font-size: 0.45rem;
@@ -720,6 +872,15 @@ body {
 }
 
 .game-cartridge {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -732,7 +893,13 @@ body {
   transform: translateY(2px);
 }
 
+.game-cartridge:focus-visible {
+  outline: 2px solid var(--neon-yellow);
+  outline-offset: 4px;
+}
+
 .cart-label {
+  display: block;
   font-family: var(--pixel-font);
   font-size: 0.4rem;
   color: #fff;
@@ -743,6 +910,7 @@ body {
 }
 
 .cart-body {
+  display: block;
   height: 80px;
   border: 3px solid #555;
   border-top: none;
@@ -814,9 +982,24 @@ body {
 }
 
 .setup-icon {
-  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem;
+  width: 48px;
+  height: 48px;
+}
+
+.setup-icon img {
+  width: 48px;
+  height: 48px;
   display: block;
-  margin-bottom: 0.75rem;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(0, 217, 255, 0.25));
+}
+
+.setup-item:hover .setup-icon img {
+  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.45));
 }
 
 .setup-item h4 {
@@ -913,6 +1096,11 @@ body {
 
 .coin-slot:active {
   transform: scale(0.95);
+}
+
+.coin-slot:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 3px;
 }
 
 .speaker-grill {
@@ -1124,6 +1312,44 @@ body.konami-unlocked .hero-screen {
   letter-spacing: 0.1em;
 }
 
+.identity-subtitle-palette {
+  margin-bottom: 1rem;
+}
+
+.identity-palette {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem 1.25rem;
+  margin: 0 auto 2rem;
+  max-width: 720px;
+  padding: 0;
+}
+
+.identity-palette li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.identity-palette .swatch {
+  width: 36px;
+  height: 36px;
+  background: var(--swatch);
+  border: 2px solid #333;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.identity-palette .swatch-label {
+  font-family: var(--font-display);
+  font-size: 0.35rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .identity-subtitle {
   font-family: var(--font-display);
   font-size: 0.55rem;
@@ -1169,6 +1395,31 @@ body.konami-unlocked .hero-screen {
   margin-bottom: 1.25rem;
 }
 
+@media (min-width: 900px) {
+  .header-main {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem 1rem;
+    padding: 0 0.75rem;
+  }
+
+  .brand-bar {
+    justify-content: flex-start;
+    border-bottom: none;
+    background: transparent;
+    padding: 0.45rem 0.25rem;
+  }
+
+  .nav {
+    border-top: none;
+  }
+
+  .hud {
+    border-top: none;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+  }
+}
+
 @media (min-width: 768px) {
   .hero-layout {
     flex-direction: row;
@@ -1191,14 +1442,14 @@ body.konami-unlocked .hero-screen {
   }
 
   .brand-name {
-    font-size: 0.48rem;
+    font-size: max(0.75rem, 12px);
   }
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .hud {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .hero-screen {
@@ -1206,6 +1457,43 @@ body.konami-unlocked .hero-screen {
   }
 
   .nav-link {
-    font-size: 0.45rem;
+    font-size: 0.42rem;
+    padding: 0.7rem 0.45rem;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scanlines {
+    animation: none;
+    opacity: 0.35;
+  }
+
+  .marquee span {
+    animation: none;
+    transform: none;
+  }
+
+  .blink,
+  .blink-slow {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-mascot,
+  .boot-mark {
+    animation: none;
   }
 }

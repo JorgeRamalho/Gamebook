@@ -1,0 +1,31 @@
+{
+  "name": "projeto-gamebook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GameBook — site pessoal retro arcade de Jorge",
+  "homepage": "https://jorgeramalho.github.io/Projeto-gamebook/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JorgeRamalho/Projeto-gamebook.git"
+  },
+  "scripts": {
+    "serve": "npx --yes serve . -l 5502",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js && npm run check:site-url",
+    "lint:html": "html-validate \"index.html\"",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:js": "eslint \"js/**/*.js\"",
+    "check:site-url": "node scripts/check-site-url.mjs",
+    "ci": "npm run lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "html-validate": "^9.7.1",
+    "stylelint": "^16.23.0",
+    "stylelint-config-standard": "^39.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
