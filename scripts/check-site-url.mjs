@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
-const SITE_URL = 'https://jorgeramalho.github.io/Projeto-gamebook/';
+const SITE_URL = 'https://gamebook-one.vercel.app/';
 
 const checks = [
   {

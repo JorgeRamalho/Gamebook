@@ -2,13 +2,19 @@
 
 ## SITE_URL (fonte da verdade)
 
-URL canônica atual:
+URL canônica de produção:
 
 ```
-https://jorgeramalho.github.io/Projeto-gamebook/
+https://gamebook-one.vercel.app/
 ```
 
-Ao mudar o domínio (Netlify, Vercel, domínio próprio), atualize **todos** estes pontos:
+| Ambiente | URL |
+|----------|-----|
+| Produção (canônica) | https://gamebook-one.vercel.app/ |
+| Espelho GitHub Pages | https://jorgeramalho.github.io/Gamebook/ |
+| Código | https://github.com/JorgeRamalho/Gamebook |
+
+Ao mudar o domínio, atualize **todos** estes pontos:
 
 | Arquivo | O quê |
 |---------|--------|
@@ -16,6 +22,8 @@ Ao mudar o domínio (Netlify, Vercel, domínio próprio), atualize **todos** est
 | `robots.txt` | comentário + `Sitemap:` |
 | `sitemap.xml` | `<loc>` |
 | `js/script.js` | `CONFIG.siteUrl` |
+| `scripts/check-site-url.mjs` | constante `SITE_URL` |
+| `package.json` | `homepage` |
 
 ## Implementado (P2)
 
@@ -29,13 +37,13 @@ Ao mudar o domínio (Netlify, Vercel, domínio próprio), atualize **todos** est
 
 ## Checklist pré-deploy
 
-1. Confirmar `SITE_URL` nos 4 arquivos acima
+1. Confirmar `SITE_URL` nos arquivos da tabela acima
 2. Publicar `assets/social/og-image.png` acessível via HTTPS
 3. Testar preview: [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), [Twitter/X Card Validator](https://cards-dev.twitter.com/validator), [Rich Results](https://search.google.com/test/rich-results)
-4. Enviar `sitemap.xml` no Google Search Console (após o domínio estar no ar)
-5. Verificar que `robots.txt` responde em `/robots.txt`
+4. Enviar `sitemap.xml` no Google Search Console
+5. Verificar `https://gamebook-one.vercel.app/robots.txt`
 
-## GitHub Pages (sugestão)
+## Publicação
 
-No repositório `Projeto-gamebook`: Settings → Pages → Deploy from branch `master` / root.  
-A URL padrão fica: `https://jorgeramalho.github.io/Projeto-gamebook/`
+- **Vercel** — deploy automático a partir de `master` (URL canônica).
+- **GitHub Pages** — espelho opcional em `https://jorgeramalho.github.io/Gamebook/` (branch `master` / root).

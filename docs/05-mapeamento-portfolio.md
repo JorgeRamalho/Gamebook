@@ -21,7 +21,8 @@ J:/area de trabalho/Fron_End/
 | Stack | HTML + CSS + JS vanilla |
 | Diferencial | Identidade visual arcade completa + easter eggs |
 | Público | Visitante nostálgico + avaliador de portfólio |
-| Remoto | https://github.com/JorgeRamalho/Projeto-gamebook |
+| Remoto | https://github.com/JorgeRamalho/Gamebook |
+| Produção | https://gamebook-one.vercel.app/ |
 
 ## Padrão de nomenclatura observado
 

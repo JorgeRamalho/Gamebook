@@ -49,7 +49,7 @@ npm run serve
 
 Alternativa: Live Server / `npx serve .`
 
-Publicação sugerida (GitHub Pages): `https://jorgeramalho.github.io/Projeto-gamebook/` — detalhes em [`docs/06-seo.md`](docs/06-seo.md).
+Publicação: [gamebook-one.vercel.app](https://gamebook-one.vercel.app/) (canônica) · espelho [GitHub Pages](https://jorgeramalho.github.io/Gamebook/) · código [JorgeRamalho/Gamebook](https://github.com/JorgeRamalho/Gamebook).
 
 ## Scripts
 

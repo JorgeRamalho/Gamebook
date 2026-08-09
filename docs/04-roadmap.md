@@ -39,6 +39,12 @@ Prioridade baseada na auditoria Playwright de 09/08/2026.
 - [x] GitHub Actions CI (`.github/workflows/ci.yml`)
 - [x] Checklist pré-deploy no README + [`08-engenharia.md`](./08-engenharia.md)
 
+## P5 — Publicação alinhada
+
+- [x] Remoto `origin` → `https://github.com/JorgeRamalho/Gamebook.git`
+- [x] `SITE_URL` canônica → `https://gamebook-one.vercel.app/`
+- [x] Docs/SEO/package atualizados (Vercel + espelho GitHub Pages)
+
 ## Critérios de pronto (definição)
 
 | Critério | Meta |

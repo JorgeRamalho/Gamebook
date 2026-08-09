@@ -1,12 +1,12 @@
 {
-  "name": "projeto-gamebook",
+  "name": "gamebook",
   "version": "1.0.0",
   "private": true,
   "description": "GameBook — site pessoal retro arcade de Jorge",
-  "homepage": "https://jorgeramalho.github.io/Projeto-gamebook/",
+  "homepage": "https://gamebook-one.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JorgeRamalho/Projeto-gamebook.git"
+    "url": "https://github.com/JorgeRamalho/Gamebook.git"
   },
   "scripts": {
     "serve": "npx --yes serve . -l 5502",

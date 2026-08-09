@@ -8,7 +8,7 @@
     storageScore: 'gameBookScore',
     storageHighScore: 'gameBookHighScore',
     // URL canônica de publicação (manter alinhada a index.html, robots.txt e sitemap.xml)
-    siteUrl: 'https://jorgeramalho.github.io/Projeto-gamebook/',
+    siteUrl: 'https://gamebook-one.vercel.app/',
     // DDI + DDD + número (somente dígitos). Ex: 5511999999999
     // Deixe vazio ou o placeholder para ocultar o botão WhatsApp.
     whatsappNumber: '',

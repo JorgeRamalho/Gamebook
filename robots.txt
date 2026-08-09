@@ -1,7 +1,7 @@
-# GameBook — https://jorgeramalho.github.io/Projeto-gamebook/
+# GameBook — https://gamebook-one.vercel.app/
 # Atualize o Sitemap se mudar o domínio de publicação.
 
 User-agent: *
 Allow: /
 
-Sitemap: https://jorgeramalho.github.io/Projeto-gamebook/sitemap.xml
+Sitemap: https://gamebook-one.vercel.app/sitemap.xml
